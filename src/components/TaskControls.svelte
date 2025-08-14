@@ -1,6 +1,6 @@
 <script lang="ts">
   import AddTask from './AddTask.svelte';
-  import { searchKeyword } from '../stores/searchStore'; // import from your new store
+  import { searchKeyword } from '../stores/searchStore'; 
 
   let showAddTaskModal = false;
 
@@ -18,7 +18,7 @@
 
   function handleSearch(e: Event) {
     const target = e.target as HTMLInputElement;
-    searchKeyword.set(target.value); // update the store
+    searchKeyword.set(target.value); 
   }
 </script>
 

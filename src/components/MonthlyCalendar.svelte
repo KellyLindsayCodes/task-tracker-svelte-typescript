@@ -1,0 +1,113 @@
+<script lang="ts">
+  import { writable } from "svelte/store";
+  import type { Task } from "../types";
+  import { tasks } from "../stores/taskStore";
+  import { onMount } from "svelte";
+
+  export let selectedDate: Date;
+  export let setSelectedDate: (date: Date) => void;
+
+  let currentMonth = new Date();
+
+  // Helper: get first day of month (0 = Sunday)
+  function firstDayOfMonth(date: Date) {
+    const d = new Date(date.getFullYear(), date.getMonth(), 1);
+    return d.getDay();
+  }
+
+  // Helper: get number of days in month
+  function daysInMonth(date: Date) {
+    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  }
+
+  function prevMonth() {
+    currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
+  }
+
+  function nextMonth() {
+    currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1);
+  }
+
+  $: monthDays = Array.from({ length: daysInMonth(currentMonth) }, (_, i) => i + 1);
+</script>
+
+<div class="calendar">
+  <div class="calendar-header">
+    <button on:click={prevMonth}>&lt;</button>
+    <h3>{currentMonth.toLocaleString(undefined, { month: "long", year: "numeric" })}</h3>
+    <button on:click={nextMonth}>&gt;</button>
+  </div>
+
+  <div class="calendar-grid">
+    {#each ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"] as day}
+      <div class="day-name">{day}</div>
+    {/each}
+
+    {#each Array(firstDayOfMonth(currentMonth)).fill(null) as _}
+      <div class="empty"></div>
+    {/each}
+
+    {#each monthDays as day}
+      <div
+        class="day"
+        class:selected={selectedDate && selectedDate.toDateString() === new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day).toDateString()}
+        on:click={() => setSelectedDate(new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day))}
+      >
+        {day}
+      </div>
+    {/each}
+  </div>
+</div>
+
+<style>
+  .calendar {
+    max-width: 350px;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .calendar-header button {
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    background: #e763f9;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.25rem;
+  }
+
+  .day-name {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .day, .empty {
+    text-align: center;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+  }
+
+  .day.selected {
+    background-color: #e763f9;
+    color: white;
+  }
+
+  .day:hover {
+    background-color: #f0c2f1;
+  }
+</style>
