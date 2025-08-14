@@ -10,12 +10,6 @@
   <div>{task.dueDate || '-'}</div>
   <div>{task.priority}</div>
   <div>{task.category || '-'}</div>
-  <div>
-    <input type="checkbox" checked={task.completed} on:change={() => toggleTask(task.id)} />
-  </div>
-  <div>
-    <button on:click={() => deleteTask(task.id)}>❌</button>
-  </div>
 </div>
 
 <style>

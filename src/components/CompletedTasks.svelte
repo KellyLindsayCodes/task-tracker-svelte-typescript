@@ -35,7 +35,7 @@
   {#if $completedTasks.length > 0}
     {#each $completedTasks as task}
       <div class="task">
-        <span>{task.name}</span>
+        <span>{task.title}</span>
         <span>{task.dueDate}</span>
       </div>
     {/each}

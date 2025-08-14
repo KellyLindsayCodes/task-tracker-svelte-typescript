@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Nunito:wght@400;600;700&family=Poppins:wght@400;500;700&display=swap');
+
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: system-ui, 'Roboto' 'Open Sans', Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -23,12 +27,14 @@ a:hover {
 }
 
 body {
+  font-family: 'Open Sans';
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
 }
 
-h1 {
+h1, h2, h3 {
+  font-family: 'Roboto';
   font-size: 3.2em;
   line-height: 1.1;
 }
@@ -62,6 +68,8 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -76,17 +84,17 @@ button:focus-visible {
 }
 
 .app-container {
-  display: flex;        /* horizontal layout */
-  min-height: 100vh;    /* full viewport height */
+  display: flex;        
+  min-height: 100vh;    
 }
 
 .sidebar {
-  width: 220px;         /* fixed sidebar width */
-  height: 100vh;        /* full height */
+  width: 220px; 
+  height: 100vh;        
 }
 
 .main-content {
-  flex: 1;              /* take remaining width */
+  flex: 1;              
   padding: 2rem;
 }
 

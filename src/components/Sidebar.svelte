@@ -22,8 +22,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
-    height: 100vh; 
-    width: 220px;
     background-color: #f7f7f7;
     padding: 1rem;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);

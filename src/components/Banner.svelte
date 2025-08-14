@@ -5,36 +5,44 @@
 <style>
   .banner {
     width: 100%;
-    background: linear-gradient(to top, rgba(231, 99, 249, 0.8), rgba(242, 194, 238, 0.3)); 
+    background: linear-gradient(
+  to top, 
+  rgba(200, 180, 255),  
+  rgba(230, 210, 255, 0.3)
+);
     padding: 3rem 2rem; 
     box-sizing: border-box;
     text-align: left;
     color: #333;
-    border-radius: 1rem;
+    border-radius: 28px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   .banner h1 {
-    margin: 0 0 0.5rem 0;
-    font-size: 2.5rem;
+    color: #4B0082;
   }
 
-  .banner h2 {
-    margin: 0 0 0.25rem 0;
-    font-size: 1.8rem;
-    font-weight: normal;
-  }
-
-  .banner p {
-    margin: 0;
+  .banner h3 {
+    margin: 1rem 0;
     font-size: 1.2rem;
-    color: #555;
+    font-weight: normal;
+    color: #6F4685;
+    font-family: 'Open Sans';
   }
+
+  .banner button {
+    font-family: 'Inter';
+    background-color: #4B0082;
+    color: #F5F5F5;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+
 </style>
 
 <div class="banner">
-  <h1>Today's Tasks</h1>
-  <h2>Hi there,</h2>
-  <p>Let's finish your tasks today!</p>
+  <h1>Your To-Dos</h1>
+  <h3>What's on the agenda today? Let's make it happen!</h3>
+  <button>Create Task</button>
 </div>
