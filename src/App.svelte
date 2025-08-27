@@ -34,19 +34,24 @@
 <div class="app-container">
   <Sidebar />
   <main class="main-content">
-    <Banner />
-    <TaskControls 
+    <section class="center">
+      <Banner />
+      <TaskControls 
       onAdd={handleAddTask} 
       onEdit={handleEditTask} 
       onSearch={handleSearch} 
-    />
-    <TaskList tasks={filteredTasks} />
-    <MonthlyCalendar 
-      {selectedDate} 
-      on:selectDate={(e) => selectedDate = e.detail} 
-    />
-    <UpcomingTasks {selectedDate} />
-    <CompletedTasks />
+      />
+      <TaskList tasks={filteredTasks} />
+      <CompletedTasks />
+    </section>
+
+    <aside class="right-rail">
+      <MonthlyCalendar 
+        {selectedDate} 
+        on:selectDate={(e) => selectedDate = e.detail} 
+      />
+      <UpcomingTasks {selectedDate} />
+    </aside>
   </main>
 </div>
 
@@ -58,9 +63,24 @@
 
   .main-content {
     flex: 1;
-    padding: 2rem;
+    display: grid;
+    grid-template-columns: minmax(640px, 1fr) 360px; 
+    gap: 2rem;
+    padding: 0 2rem;
+    align-items: start;
+  }
+
+  .center {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
+    max-width: 1200px;
   }
+
+  .right-rail {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+  }
+
 </style>

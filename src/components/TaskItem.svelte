@@ -29,6 +29,6 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: #e763f9;
+    color: #483D8B;
   }
 </style>

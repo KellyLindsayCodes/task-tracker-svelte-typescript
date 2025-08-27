@@ -9,13 +9,11 @@
 
   let currentMonth = new Date();
 
-  // Helper: get first day of month (0 = Sunday)
   function firstDayOfMonth(date: Date) {
     const d = new Date(date.getFullYear(), date.getMonth(), 1);
     return d.getDay();
   }
 
-  // Helper: get number of days in month
   function daysInMonth(date: Date) {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
   }
@@ -39,7 +37,7 @@
   </div>
 
   <div class="calendar-grid">
-    {#each ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"] as day}
+    {#each ["S","M","T","W","T","F","S"] as day}
       <div class="day-name">{day}</div>
     {/each}
 
@@ -64,7 +62,7 @@
     max-width: 350px;
     border: 1px solid #ccc;
     border-radius: 0.5rem;
-    padding: 1rem;
+    padding: 0.5rem;
     margin-bottom: 2rem;
   }
 
@@ -78,8 +76,6 @@
   .calendar-header button {
     cursor: pointer;
     padding: 0.25rem 0.5rem;
-    background: #e763f9;
-    color: white;
     border: none;
     border-radius: 0.25rem;
   }
@@ -97,17 +93,17 @@
 
   .day, .empty {
     text-align: center;
-    padding: 0.5rem;
+    padding: 0.8rem;
     cursor: pointer;
-    border-radius: 0.25rem;
+    border-radius: 50%;
   }
 
   .day.selected {
-    background-color: #e763f9;
-    color: white;
+    background-color: #483D8B;
+    color: #F9FAFB;
   }
 
   .day:hover {
-    background-color: #f0c2f1;
+    background-color: #9B55D0;
   }
 </style>

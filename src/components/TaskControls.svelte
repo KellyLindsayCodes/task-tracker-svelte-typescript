@@ -1,16 +1,12 @@
 <script lang="ts">
   import AddTask from './AddTask.svelte';
-  import { searchKeyword } from '../stores/searchStore'; 
+  import { searchKeyword } from '../stores/searchStore';
+  import { Pencil, Plus, Search } from "lucide-svelte";
 
   let showAddTaskModal = false;
 
-  function openAddTaskModal() {
-    showAddTaskModal = true;
-  }
-
-  function closeAddTaskModal() {
-    showAddTaskModal = false;
-  }
+  function openAddTaskModal() { showAddTaskModal = true; }
+  function closeAddTaskModal() { showAddTaskModal = false; }
 
   function handleEdit() {
     alert("Edit functionality coming soon!");
@@ -18,26 +14,43 @@
 
   function handleSearch(e: Event) {
     const target = e.target as HTMLInputElement;
-    searchKeyword.set(target.value); 
+    searchKeyword.set(target.value);
   }
 </script>
 
 <div class="task-controls">
-  <!-- Search -->
+  <div class="search-container">
+  <Search size={16} class="search-icon" aria-hidden="true" />
   <input
     type="text"
-    placeholder="Search tasks..."
+    placeholder="Search tasks"
     on:input={handleSearch}
   />
-
-  <!-- Edit -->
-  <button type="button" on:click={handleEdit}>Edit</button>
-
-  <!-- Add Task -->
-  <button type="button" on:click={openAddTaskModal}>Add Task</button>
 </div>
 
-<!-- Modal -->
+
+  <button
+    type="button"
+    class="icon-btn"
+    on:click={handleEdit}
+    aria-label="Edit tasks"
+    title="Edit"
+  >
+    <Pencil size={18} aria-hidden="true" />
+  </button>
+
+  <button
+    type="button"
+    class="icon-btn primary"
+    on:click={openAddTaskModal}
+    aria-label="Add task"
+    title="Add task"
+  >
+    <Plus size={18} aria-hidden="true" />
+  </button>
+</div>
+
+
 {#if showAddTaskModal}
   <div
     class="modal-backdrop"
@@ -72,52 +85,63 @@
     display: flex;
     gap: 0.5rem;
     margin-bottom: 1rem;
+    align-items: center;
   }
 
   .task-controls input {
     flex: 1;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ddd;
     border-radius: 0.5rem;
+    font: inherit;
   }
 
-  .task-controls button {
-    padding: 0.5rem 1rem;
-    background-color: #e763f9;
-    color: white;
+  .icon-btn {
+    width: 36px;
+    height: 36px;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #eae6ff;            
+    color: #483D8B;                 
     cursor: pointer;
+    transition: background-color .15s ease, box-shadow .15s ease, transform .04s ease;
+  }
+  .icon-btn:hover {
+    background: #dcd4ff;
+    box-shadow: 0 2px 8px rgba(72,61,139,0.18);
+  }
+  .icon-btn:active { transform: translateY(1px); }
+
+  .icon-btn.primary {
+    background: #483D8B;
+    color: #F9FAFB;
+  }
+  .icon-btn.primary:hover {
+    background: #3f357f;
+    box-shadow: 0 3px 10px rgba(72,61,139,0.25);
   }
 
-  .task-controls button:hover {
-    background-color: #d254e0;
+  .icon-btn:focus-visible {
+    outline: 3px solid #E9DEFF;
+    outline-offset: 2px;
   }
 
   .modal-backdrop {
-    position: fixed;
-    inset: 0;
+    position: fixed; inset: 0;
     background: rgba(0,0,0,0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; justify-content: center; align-items: center;
   }
-
   .modal {
-    background: white;
-    padding: 2rem;
-    border-radius: 0.75rem;
-    max-width: 400px;
-    width: 90%;
+    background: white; padding: 2rem; border-radius: 0.75rem;
+    max-width: 400px; width: 90%;
   }
-
   .modal button {
-    margin-top: 1rem;
-    background-color: #999;
-    color: white;
+    margin-top: 1rem; background-color: #999; color: white;
+    border: none; padding: 0.5rem 1rem; border-radius: 0.5rem;
   }
-
-  .modal button:hover {
-    background-color: #777;
-  }
+  .modal button:hover { background-color: #777; }
+  
 </style>
