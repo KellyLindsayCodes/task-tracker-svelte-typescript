@@ -37,24 +37,24 @@
   </div>
 
   <div class="calendar-grid">
-    {#each ["S","M","T","W","T","F","S"] as day}
-      <div class="day-name">{day}</div>
-    {/each}
+  {#each ["S","M","T","W","T","F","S"] as day}
+    <div class="day-name">{day}</div>
+  {/each}
 
-    {#each Array(firstDayOfMonth(currentMonth)).fill(null) as _}
+  {#each Array(42).fill(null).map((_, i) => i) as i}
+    {#if i < firstDayOfMonth(currentMonth) || i >= firstDayOfMonth(currentMonth) + monthDays.length}
       <div class="empty"></div>
-    {/each}
-
-    {#each monthDays as day}
+    {:else}
       <div
         class="day"
-        class:selected={selectedDate && selectedDate.toDateString() === new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day).toDateString()}
-        on:click={() => setSelectedDate(new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day))}
+        class:selected={selectedDate && selectedDate.toDateString() === new Date(currentMonth.getFullYear(), currentMonth.getMonth(), i - firstDayOfMonth(currentMonth) + 1).toDateString()}
+        on:click={() => setSelectedDate(new Date(currentMonth.getFullYear(), currentMonth.getMonth(), i - firstDayOfMonth(currentMonth) + 1))}
       >
-        {day}
+        {i - firstDayOfMonth(currentMonth) + 1}
       </div>
-    {/each}
-  </div>
+    {/if}
+  {/each}
+</div>
 </div>
 
 <style>
@@ -63,7 +63,7 @@
     border: 1px solid #ccc;
     border-radius: 0.5rem;
     padding: 0.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   .calendar-header {

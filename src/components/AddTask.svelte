@@ -2,7 +2,6 @@
   import type { Task } from "../types";
   import { addTask } from "../stores/taskStore";
 
-  // Form fields
   let title = "";
   let description = "";
   let dueDate: string = "";
@@ -10,7 +9,7 @@
   let category = "";
 
   function handleSubmit() {
-    if (!title.trim()) return; // simple validation
+    if (!title.trim()) return;
 
     const newTask: Omit<Task, "id"> = {
       title,
@@ -23,7 +22,6 @@
 
     addTask(newTask);
 
-    // Reset form
     title = "";
     description = "";
     dueDate = "";
@@ -67,7 +65,7 @@
 
   button {
     padding: 0.75rem;
-    background-color: #e763f9;
+    background-color: #483D8B;
     color: white;
     border: none;
     border-radius: 0.5rem;
@@ -75,6 +73,6 @@
   }
 
   button:hover {
-    background-color: #d254e0;
+    background-color: #9B55D0;
   }
 </style>

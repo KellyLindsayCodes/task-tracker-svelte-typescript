@@ -84,7 +84,6 @@
   .task-controls {
     display: flex;
     gap: 0.5rem;
-    margin-bottom: 1rem;
     align-items: center;
   }
 
@@ -97,8 +96,8 @@
   }
 
   .icon-btn {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border: none;
     border-radius: 50%;
     display: inline-flex;
@@ -143,5 +142,23 @@
     border: none; padding: 0.5rem 1rem; border-radius: 0.5rem;
   }
   .modal button:hover { background-color: #777; }
+
+  .search-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; 
+  border: 1px solid #ddd;
+  border-radius: 5rem;
+  padding: 0.4rem 0.75rem;
+  background: #fff;
+}
+
+.search-container input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font: inherit;
+}
   
 </style>

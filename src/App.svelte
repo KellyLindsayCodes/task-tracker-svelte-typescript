@@ -11,6 +11,9 @@
   import { searchKeyword } from "./stores/searchStore";
   import type { Task } from './types';
 
+  import AddTask from './components/AddTask.svelte';
+  import { addTaskOpen } from './stores/uiStore';
+
   let selectedDate: Date = new Date();
   let filteredTasks: Task[] = [];
 
@@ -55,6 +58,21 @@
   </main>
 </div>
 
+{#if $addTaskOpen}
+  <div
+    class="modal-backdrop"
+    tabindex="-1"
+    on:click={() => addTaskOpen.set(false)}
+    on:keydown={(e) => e.key === 'Escape' && addTaskOpen.set(false)}
+  >
+    <div class="modal" role="dialog" aria-modal="true" on:click|stopPropagation>
+      <h1 id="modal-title">Add New Task</h1>
+      <AddTask on:done={() => addTaskOpen.set(false)} />
+      <button type="button" on:click={() => addTaskOpen.set(false)}>Close</button>
+    </div>
+  </div>
+{/if}
+
 <style>
   .app-container {
     display: flex;
@@ -82,5 +100,28 @@
     flex-direction: column;
     position: sticky;
   }
+
+  .modal-backdrop { 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,.4);
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+  }
+  
+  .modal { 
+    background:#fff; 
+    padding:2rem; 
+    border-radius:.75rem; 
+    max-width:400px; 
+    width:90%; 
+  }
+
+  .modal button {
+    margin-top: 1rem; background-color: #999; color: white;
+    border: none; padding: 0.5rem 1rem; border-radius: 0.5rem;
+  }
+  .modal button:hover { background-color: #777; }
 
 </style>

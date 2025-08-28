@@ -1,6 +1,16 @@
 <script lang="ts">
   import calendarIllustration from '../assets/task-tracker-calender.svg';
+  import { addTaskOpen } from '../stores/uiStore';
 </script>
+
+<div class="banner">
+  <div class="banner-content">
+    <h1>Your To-Dos</h1>
+    <h3>What's on your agenda today?</h3>
+    <button on:click={() => addTaskOpen.set(true)}>Schedule Task</button>
+  </div>
+  <img src={calendarIllustration} alt="Task illustration" />
+</div>
 
 <style>
   .banner {
@@ -64,12 +74,3 @@
     margin-left: 2rem;  
   }
 </style>
-
-<div class="banner">
-  <div class="banner-content">
-    <h1>Your To-Dos</h1>
-    <h3>What's on your agenda today?</h3>
-    <button>Schedule Task</button>
-  </div>
-   <img src={calendarIllustration} alt="Task illustration" />
-</div>

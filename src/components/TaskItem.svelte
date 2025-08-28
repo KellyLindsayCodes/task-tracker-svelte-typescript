@@ -3,13 +3,26 @@
   import { toggleTask, deleteTask } from "../stores/taskStore";
 
   export let task: Task;
+
+  const fmtAU = new Intl.DateTimeFormat("en-AU", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    timeZone: "Australia/Melbourne"
+  });
+
+  $: dateStr = task.dueDate ? fmtAU.format(new Date(task.dueDate)) : "";
+  $: priorityClass = (task.priority || "Low").toLowerCase();
+
 </script>
 
 <div class="task-row">
-  <div>{task.title}</div>
-  <div>{task.dueDate || '-'}</div>
-  <div>{task.priority}</div>
-  <div>{task.category || '-'}</div>
+  <div class="col title">{task.title}</div>
+  <div class="col date">{dateStr}</div>
+  <div class="col">
+    <span class={"badge " + priorityClass}>{task.priority}</span>
+  </div>
+  <div class="col category">{task.category}</div>
 </div>
 
 <style>
@@ -21,14 +34,18 @@
     border-bottom: 1px solid #eee;
   }
 
-  .task-row div {
-    padding: 0 0.5rem;
+  .badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
   }
 
-  button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #483D8B;
-  }
+  .badge.high   { background: #ef4444; color: #fff; }
+  .badge.medium { background: #f59e0b; color: #111; }
+  .badge.low    { background: #10b981; color: #fff; }
+
 </style>

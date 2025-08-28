@@ -15,7 +15,7 @@ export const tasks = writable<Task[]>([
   { id: 9, title: "Laundry", description: "Wash and fold clothes", dueDate: "2025-08-23", completed: false, priority: "Low", category: "Personal" },
   { id: 10, title: "Prepare presentation", description: "For Monday’s client meeting", dueDate: "2025-08-24", completed: false, priority: "High", category: "Work" },
   { id: 11, title: "Water plants", description: "Especially the fern in the kitchen", dueDate: "2025-08-25", completed: false, priority: "Low", category: "Personal" },
-  { id: 12, title: "Organize files", description: "Sort by project and date", dueDate: "2025-08-26", completed: true, priority: "Medium", category: "Work" },
+  { id: 12, title: "Organise files", description: "Sort by project and date", dueDate: "2025-08-26", completed: true, priority: "Medium", category: "Work" },
   { id: 13, title: "Clean the car", description: "Inside and outside", dueDate: "2025-08-27", completed: false, priority: "Low", category: "Personal" },
   { id: 14, title: "Book dentist", description: "Teeth cleaning", dueDate: "2025-08-28", completed: false, priority: "Medium", category: "Health" },
   { id: 15, title: "Renew passport", description: "Check photo requirements", dueDate: "2025-08-29", completed: false, priority: "High", category: "Personal" },
