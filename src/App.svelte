@@ -6,6 +6,7 @@
   import UpcomingTasks from './components/UpcomingTasks.svelte';
   import MonthlyCalendar from './components/MonthlyCalendar.svelte';
   import CompletedTasks from './components/CompletedTasks.svelte';
+  import TasksToComplete from "./components/TasksToComplete.svelte";
 
   import { tasks } from "./stores/taskStore";
   import { searchKeyword } from "./stores/searchStore";
@@ -54,6 +55,7 @@
         on:selectDate={(e) => selectedDate = e.detail} 
       />
       <UpcomingTasks {selectedDate} />
+      <TasksToComplete />
     </aside>
   </main>
 </div>
