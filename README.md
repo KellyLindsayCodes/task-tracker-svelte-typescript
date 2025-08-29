@@ -4,6 +4,8 @@
 A clean, keyboard-friendly task tracker built with Svelte + Vite.
 Features weekly “Upcoming Tasks”, searchable/paginated task list, priority badges, and a central Add Task modal.
 
+<img width="1881" height="906" alt="image" src="https://github.com/user-attachments/assets/eb3323aa-391b-4727-b067-1a4c42ef4d8c" />
+
 ## ✨ Features 
 - Add / list / complete / delete tasks (Svelte stores)
 - Upcoming week strip with prev/next (Mon–Sun) and AU date format
