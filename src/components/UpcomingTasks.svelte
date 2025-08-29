@@ -111,6 +111,7 @@
     border-radius: 0.75rem;
     box-sizing: border-box;
     overflow-x: clip;
+    padding-bottom: 3.2rem;
   }
 
   .week-navigation {

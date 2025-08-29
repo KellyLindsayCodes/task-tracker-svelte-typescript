@@ -27,14 +27,12 @@
     <div class="meta">out of {$stats.total} total</div>
   </div>
 
-  <!-- optional priority chips; remove if you want only the number -->
   <div class="chips">
     <span class="chip high">High {$stats.byPriority.High}</span>
     <span class="chip med">Medium {$stats.byPriority.Medium}</span>
     <span class="chip low">Low {$stats.byPriority.Low}</span>
   </div>
 
-  <!-- optional tiny progress bar -->
   <div class="bar" aria-hidden="true">
     <div class="fill" style="width:{($stats.completed / Math.max($stats.total, 1)) * 100}%"></div>
   </div>
@@ -44,10 +42,10 @@
 <style>
   .to-complete{
     margin-top:1rem;
-    padding:0.9rem;
+    padding:1.4rem;
     border:1px solid #ddd;
     border-radius:12px;
-    background:#faf9ff; /* subtle */
+    background:#faf9ff;
     font-family: inherit;
   }
   h3{

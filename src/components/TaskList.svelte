@@ -7,11 +7,12 @@
   const pageSize = 7;
   let page = 1;
 
-  $: totalPages = Math.max(1, Math.ceil(tasks.length / pageSize));
+  $: openTasks = tasks.filter(t => !t.completed);
+
+  $: totalPages = Math.max(1, Math.ceil(openTasks.length / pageSize));
   $: page = Math.min(page, totalPages);
   $: start = (page - 1) * pageSize;
-  $: pageTasks = tasks.slice(start, start + pageSize);
-
+  $: pageTasks = openTasks.slice(start, start + pageSize);
   const prev = () => page > 1 && page--;
   const next = () => page < totalPages && page++;
 
